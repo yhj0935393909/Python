@@ -1,0 +1,44 @@
+# 使用Tkinter前先匯入
+# as意思當作, 以下程式就用 tk來當作tkinter
+import tkinter as tk
+# 抓取 tk(也就是tkinter)裡面的Tk() 建立一個視窗
+# "window"是這個視窗在程式碼裡面的名稱
+window=tk.Tk()
+#命名視窗的標題(title)
+window.title('I love Python')
+#設定視窗的大小長與寬
+window.geometry('500x300')
+# 將label_1的標籤內容設定為字元型別<str>
+# 用var來接收hit_me函式的傳出內容用以顯示在標籤上
+var = tk.StringVar()
+# 設定標籤各式條件
+label_1 = tk.Label(window, textvariable=var, bg='green', fg='white', font=('Arial', 12), width=30, height=2)
+# 說明： bg為背景，font為字型，width為長，height為高
+
+#此為boolen變數，值只有True 和 False 兩種型態
+on_hit = False
+# 定義一個函式，當點選Button按鍵時呼叫
+# 由於python為從上往下執行，所以必須在觸發函式前先定義函式
+# 也就是說函式需要寫在按鈕前
+def hit_me():
+    #函式內需要用到外部變數時需要用global(全域變數)來宣告
+    global on_hit
+    if on_hit == False:
+        on_hit = True
+        var.set('you hit me')
+    else:
+        on_hit = False
+        var.set('')
+
+# 放置標籤，方法有： pack() ; place() ;
+label_1.pack()
+
+#在視窗放置Button按鍵，command 為被點擊時呼叫的函式
+#其餘設定值與label相同
+b = tk.Button(window, text='hit me', font=('Arial', 12), width=10, height=1, command=hit_me)
+b.pack()
+
+# 主視窗迴圈顯示
+window.mainloop() #!!!非常重要!!!
+# loop是迴圈的意思，window.mainloop會讓window不斷的重新整理
+# 相當於while的應用
