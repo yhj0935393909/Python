@@ -1,0 +1,19 @@
+# 使用Tkinter前先匯入
+# as意思當作, 以下程式就用 tk來當作tkinter
+import tkinter as tk
+# 抓取 tk(也就是tkinter)裡面的Tk() 建立一個視窗
+# "window"是這個視窗在程式碼裡面的名稱
+window=tk.Tk()
+#命名視窗的標題(title)
+window.title('I love Python')
+#設定視窗的大小長與寬
+window.geometry('500x300')# 乘=小x
+
+#在介面上放置輸入元件並顯示
+entry_1 = tk.Entry(window, show=None,font=('Arial', 20))  #   顯示輸入
+entry_2 = tk.Entry(window, show='*', font=('Arial', 14))  # 不顯示輸入,以*表示
+entry_1.pack()
+entry_2.pack()
+
+# 第5步，主視窗迴圈顯示
+window.mainloop()
